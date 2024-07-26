@@ -13,7 +13,7 @@ Open `AndroidManifest.xml` and find line:
 <uses-feature android:name="com.oculus.feature.PASSTHROUGH" android:required="true"/>
 ```
 
-insert the following below the this line:
+insert the following below this line:
 
 ```xml
 <uses-feature android:name="com.oculus.feature.BOUNDARYLESS_APP" android:required="true" />
