@@ -33,7 +33,5 @@ Somtimes the video mode detection via filename in HereSphere is not working. The
 Additional Settings:
 
 - Basic Video Settings : Alignment : Right (Scale) - To adjust the model size
-- Basic Video Settings : Origin : Forward - To adjust the depth position or use thub stick forward/backward to adjust this
+- Basic Video Settings : Origin : Forward - To adjust the depth position or use thumb stick forward/backward to adjust this
 - Basic Video Settings : Motion : Distance - To approx 50 to get better 6DoF experience.
-
-Finally use controler grap to set the correct position of the model.
