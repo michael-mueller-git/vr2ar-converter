@@ -19,6 +19,8 @@ When you use Nix on Linux you may have to wrapp the command into `nixGL`
 nix run --impure github:guibou/nixGL -- nix run github:michael-mueller-git/vr2ar-converter -- [VIDEO] [VR_INPUT_TYPE] 
 ```
 
+Pro Tip: You can call this tool for several video segments at the same time until your GPU is fully used to get the max throughput.
+
 ### Consume Videos
 
 To play the AR videos you can use [HereSphere](https://heresphere.com/) e.g. with Meta Quest 3.
@@ -37,3 +39,5 @@ Additional Settings:
 - Basic Video Settings : Motion : Distance - To approx 50 to get better 6DoF experience.
 
 Finally use controler grap to set the correct position of the model.
+
+

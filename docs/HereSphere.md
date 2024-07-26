@@ -19,7 +19,7 @@ insert the following below this line:
 <uses-feature android:name="com.oculus.feature.BOUNDARYLESS_APP" android:required="true" />
 ```
 
-then compile tha apk again:
+then compile the apk again:
 
 ```sh
 apktool b HereSphere-v0.11.2-demo
