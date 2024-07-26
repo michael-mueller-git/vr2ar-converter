@@ -1,0 +1,10 @@
+*.mp4
+*.mkv
+*.avi
+result
+bin/
+Makefile
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+build/
