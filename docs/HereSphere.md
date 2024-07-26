@@ -7,7 +7,7 @@ nix-shell -p apksigner apktool zulu8
 apktool d HereSphere-v0.11.2-demo.apk
 ```
 
-Open AndroidManifest.xml and find line: 
+Open `AndroidManifest.xml` and find line: 
 
 ```xml
 <uses-feature android:name="com.oculus.feature.PASSTHROUGH" android:required="true"/>
