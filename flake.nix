@@ -54,6 +54,7 @@
             export VULKAN_LIBRARY=${pkgs.vulkan-loader}/lib/libvulkan.so
             export NCNN_INSTALL_DIR=${pkgs.ncnn}
             export OpenCV_DIR=${opencvGtk}
+            export FFMPEG_PATH=${pkgs.ffmpeg_6-full}/bin/ffmpeg
             cmake -B build -S .
           '';
 
@@ -68,9 +69,7 @@
             unzip files/mobilenetv3.zip -d $out/bin/
             unzip files/resnet50.zip -d $out/bin/
             echo "$out/bin/"
-          '';
-          postInstall = ''
-            wrapProgram "$out/bin/vr2ar-converter" --prefix LD_LIBRARY_PATH : "${libPath}" --prefix PATH : "${binPath}"
+            wrapProgram "$out/bin/vr2ar-converter" --prefix LD_LIBRARY_PATH : "${libPath}" --prefix PATH : "${binPath}" --add-flags "--ffmpeg-path ${pkgs.ffmpeg_6-full}/bin/ffmpeg"
           '';
         };
       formatter.${system} = pkgs.nixpkgs-fmt;
@@ -82,6 +81,7 @@
             export VULKAN_LIBRARY=${pkgs.vulkan-loader}/lib/libvulkan.so
             export NCNN_INSTALL_DIR=${pkgs.ncnn}
             export OpenCV_DIR=${opencvGtk}
+            export FFMPEG_PATH=${pkgs.ffmpeg_6-full}/bin/ffmpeg
           '';
       };
     };

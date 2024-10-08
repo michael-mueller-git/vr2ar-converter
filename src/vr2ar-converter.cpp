@@ -74,6 +74,9 @@ int main(int argc, char **argv) {
         .default_value(17)
         .scan<'i', int>();
 
+    program.add_argument("--ffmpeg-path")
+        .default_value("ffmpeg");
+
     try {
         program.parse_args(argc, argv);
     }
@@ -89,6 +92,7 @@ int main(int argc, char **argv) {
     auto model = program.get<std::string>("--model");
     double scale =  program.get<double>("--scale");
     int crf = program.get<int>("--crf");
+    std::string ffmpeg  = program.get<std::string>("--ffmpeg-path");
 
     auto mask_file = bin_path / std::filesystem::path("mask.png"); 
     auto model_param = bin_path / std::filesystem::path(model) / std::filesystem::path("rvm_ts.ncnn.param"); 
@@ -117,11 +121,13 @@ int main(int argc, char **argv) {
         dest.erase(dest.size() - 4);
     }
 
+    std::cout << "use ffmpeg: " << ffmpeg << std::endl;
+
     std::string result_video_type = videotype;
     std::transform(result_video_type.begin(), result_video_type.end(), result_video_type.begin(), ::toupper);
     std::string fisheyevideo = inputvideo;
     if (videotype == "eq") { 
-        std::string cmd1 = "ffmpeg -i \"";
+        std::string cmd1 = ffmpeg + " -i \"";
         cmd1 += inputvideo;
         cmd1 += R"(" -filter_complex "[0:v]split=2[left][right]; [left]crop=ih:ih:0:0[left_crop]; [right]crop=ih:ih:ih:0[right_crop]; [left_crop]v360=hequirect:fisheye:iv_fov=180:ih_fov=180:v_fov=180:h_fov=180[leftfisheye]; [right_crop]v360=hequirect:fisheye:iv_fov=180:ih_fov=180:v_fov=180:h_fov=180[rightfisheye]; [leftfisheye][rightfisheye]hstack[v]" -map '[v]' -c:a copy -crf )";
         cmd1 += std::to_string(crf);
@@ -205,7 +211,7 @@ int main(int argc, char **argv) {
     cap.release();
 
 
-    std::string cmd2 = R"(ffmpeg -i ")";
+    std::string cmd2 = ffmpeg + R"( -i ")";
     cmd2 += fisheyevideo ;
     cmd2 += "\" -i \"";
     cmd2 += dest + "-alpha.avi";
