@@ -1,5 +1,8 @@
 # VR2AR Converter
 
+> [!WARNING]
+> This repository is obsolete and was replaced by https://github.com/michael-mueller-git/vr2ar-converter-v3
+
 Convert your adult VR Videos into Passthrough AR Videos. 
 
 > [!NOTE]
